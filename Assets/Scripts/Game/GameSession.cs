@@ -8,6 +8,7 @@ public class GameSession : MonoBehaviour
     private float money = 0;
 
     public PurchaseGenerator purchaseGenerator;
+    public InvoiceGenerator invoiceGenerator;
 
     private void Start()
     {
@@ -25,10 +26,24 @@ public class GameSession : MonoBehaviour
 
             purchaseGenerator.GeneratePurchase();
 
-            Debug.Log(
-                "Valor da compra: R$ " +
-                purchaseGenerator.GetCurrentPurchaseTotal().ToString("F2")
-            );
+            Invoice invoice = invoiceGenerator.GenerateInvoice(purchaseGenerator);
+
+            Debug.Log("===== NOTA FISCAL =====");
+
+            foreach (InvoiceItem item in invoice.items)
+            {
+                Debug.Log(
+                    item.productName +
+                    " x" +
+                    item.quantity +
+                    " = R$ " +
+                    item.GetTotal().ToString("F2")
+                );
+            }
+
+            Debug.Log("TOTAL DA NOTA: R$ " + invoice.total.ToString("F2"));
+            Debug.Log("NOTA CORRETA: " + invoice.isCorrect);
+
         }
 
         Debug.Log("================================");

@@ -69,4 +69,9 @@ public class PurchaseGenerator : MonoBehaviour
     {
         return CalculatePurchaseTotal();
     }
+
+    public List<PurchaseItem> GetCurrentPurchase()
+    {
+        return currentPurchase;
+    }
 }
