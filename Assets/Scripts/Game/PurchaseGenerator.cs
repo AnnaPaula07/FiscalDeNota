@@ -7,12 +7,7 @@ public class PurchaseGenerator : MonoBehaviour
 
     private List<PurchaseItem> currentPurchase = new List<PurchaseItem>();
 
-    private void Start()
-    {
-        GeneratePurchase();
-    }
-
-    private void GeneratePurchase()
+    public void GeneratePurchase()
     {
         currentPurchase.Clear();
 
@@ -39,35 +34,39 @@ public class PurchaseGenerator : MonoBehaviour
     }
 
     private void PrintPurchase()
-{
-    Debug.Log("===== NOVA COMPRA =====");
-
-    foreach (PurchaseItem item in currentPurchase)
     {
-        Debug.Log(
-            item.product.name +
-            " x" +
-            item.quantity +
-            " = R$ " +
-            item.GetTotal().ToString("F2")
-        );
+        Debug.Log("===== NOVA COMPRA =====");
+
+        foreach (PurchaseItem item in currentPurchase)
+        {
+            Debug.Log(
+                item.product.name +
+                " x" +
+                item.quantity +
+                " = R$ " +
+                item.GetTotal().ToString("F2")
+            );
+        }
+
+        float total = CalculatePurchaseTotal();
+
+        Debug.Log("TOTAL: R$ " + total.ToString("F2"));
     }
 
-    float total = CalculatePurchaseTotal();
-
-    Debug.Log("TOTAL: R$ " + total.ToString("F2"));
-}
-
-private float CalculatePurchaseTotal()
-{
-    float total = 0;
-
-    foreach (PurchaseItem item in currentPurchase)
+    private float CalculatePurchaseTotal()
     {
-        total += item.GetTotal();
+        float total = 0;
+
+        foreach (PurchaseItem item in currentPurchase)
+        {
+            total += item.GetTotal();
+        }
+
+        return total;
     }
 
-    return total;
-}
-
+    public float GetCurrentPurchaseTotal()
+    {
+        return CalculatePurchaseTotal();
+    }
 }
