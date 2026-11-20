@@ -6,5 +6,5 @@ public class Invoice
     public List<InvoiceItem> items = new List<InvoiceItem>();
     public float total;
     public bool isCorrect;
-    public string errorType;
+    public InvoiceError errorType;
 }

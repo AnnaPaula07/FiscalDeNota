@@ -1,5 +1,14 @@
 using UnityEngine;
 
+public enum InvoiceError
+{
+    None,
+    ProductName,
+    Quantity,
+    Price,
+    Total
+}
+
 public class InvoiceGenerator : MonoBehaviour
 {
     public Invoice GenerateInvoice(PurchaseGenerator purchaseGenerator)
@@ -17,9 +26,21 @@ public class InvoiceGenerator : MonoBehaviour
             invoice.items.Add(invoiceItem);
         }
 
+        bool correct = Random.value < 0.5f;
+
         invoice.total = purchaseGenerator.GetCurrentPurchaseTotal();
-        invoice.isCorrect = true;
-        invoice.errorType = "Nenhum";
+        invoice.isCorrect = correct;
+
+        if (correct)
+        {
+            invoice.errorType = InvoiceError.None;
+        }
+        else
+        {
+            InvoiceError error = (InvoiceError)Random.Range(1, 5);
+
+            invoice.errorType = error;
+        }
 
         return invoice;
     }

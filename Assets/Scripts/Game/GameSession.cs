@@ -43,6 +43,7 @@ public class GameSession : MonoBehaviour
 
             Debug.Log("TOTAL DA NOTA: R$ " + invoice.total.ToString("F2"));
             Debug.Log("NOTA CORRETA: " + invoice.isCorrect);
+            Debug.Log("ERRO: " + invoice.errorType);
 
         }
 
