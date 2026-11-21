@@ -467,6 +467,7 @@ MonoBehaviour:
   totalRounds: 10
   purchaseGenerator: {fileID: 1104234401}
   invoiceGenerator: {fileID: 1374825445}
+  gameValidator: {fileID: 1256980077}
 --- !u!4 &1016988299
 Transform:
   m_ObjectHideFlags: 0
@@ -660,6 +661,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1256980076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1256980078}
+  - component: {fileID: 1256980077}
+  m_Layer: 0
+  m_Name: GameValidator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1256980077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256980076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e056ea8367c0d46bbc344101e5e1e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameValidator
+--- !u!4 &1256980078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256980076}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 275.17526, y: 95.20744, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1374825444
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4fa8d0b91b75e43b9d4c28a5d987d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InvoiceGenerator
+  products: []
 --- !u!4 &1374825446
 Transform:
   m_ObjectHideFlags: 0
@@ -1077,3 +1123,4 @@ SceneRoots:
   - {fileID: 1104234402}
   - {fileID: 1016988299}
   - {fileID: 1374825446}
+  - {fileID: 1256980078}

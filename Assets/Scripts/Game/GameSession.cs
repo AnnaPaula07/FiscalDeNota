@@ -9,6 +9,7 @@ public class GameSession : MonoBehaviour
 
     public PurchaseGenerator purchaseGenerator;
     public InvoiceGenerator invoiceGenerator;
+    public GameValidator gameValidator;
 
     private void Start()
     {
@@ -45,7 +46,22 @@ public class GameSession : MonoBehaviour
             Debug.Log("NOTA CORRETA: " + invoice.isCorrect);
             Debug.Log("ERRO: " + invoice.errorType);
 
-        }
+            PlayerDecision testDecision = invoice.isCorrect
+            ? PlayerDecision.Accept
+            : PlayerDecision.Reject;
+
+            ValidationResult result = gameValidator.ValidateDecision(
+                testDecision,
+                purchaseGenerator,
+                invoice
+            );
+
+            money += result.moneyEarned;
+
+            Debug.Log("DECISÃO: " + testDecision);
+            Debug.Log("DECISÃO CORRETA: " + result.decisionCorrect);
+            Debug.Log("DINHEIRO GANHO: R$ " + result.moneyEarned.ToString("F2"));
+            }
 
         Debug.Log("================================");
         Debug.Log("FIM DA PARTIDA");
